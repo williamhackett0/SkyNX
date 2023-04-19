@@ -35,6 +35,12 @@ function initSettings() {
     if (!clientSettings.hasOwnProperty("monitorID")) {
         clientSettings.monitorID = "0";
     }
+    if (!clientSettings.hasOwnProperty("xOffset")) {
+        clientSettings.xOffset = "0";
+    }
+    if (!clientSettings.hasOwnProperty("yOffset")) {
+        clientSettings.yOffset = "0";
+    }
     if (!clientSettings.hasOwnProperty("quality")) {
         clientSettings.quality = 5;
     }
@@ -97,6 +103,8 @@ function applyClientSettings() {
     }
     $("#ipInput").val(clientSettings.ip);
     $("#monitorInput").val(clientSettings.monitorID);
+    $("#xOffset").val(clientSettings.xOffset);
+    $("#yOffset").val(clientSettings.yOffset);
 
     if (clientSettings.encoding == "NVENC") {
         $("#encodingDrop").html("Encoding (Nvidia)");
@@ -224,6 +232,16 @@ $(document).on('input', '#ipInput', function () {
 
 $(document).on('input', '#monitorInput', function () {
     clientSettings.monitorID = $(this).val();
+    saveClientSettings();
+});
+
+$(document).on('input', '#xOffset', function () {
+    clientSettings.xOffset = $(this).val();
+    saveClientSettings();
+});
+
+$(document).on('input', '#yOffset', function () {
+    clientSettings.yOffset = $(this).val();
     saveClientSettings();
 });
 
