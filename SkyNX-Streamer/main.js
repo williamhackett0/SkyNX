@@ -728,7 +728,6 @@ function connectHID() {
     var hid = parseInputStruct(data);
 
     var controllerCount = hid.get("controllerCount");
-    console.log(controllerCount);
     if (controllerCount > controllerIds.length) {
       plugControllerIn();
     }
